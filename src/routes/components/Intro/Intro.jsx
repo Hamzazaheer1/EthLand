@@ -26,7 +26,11 @@ function Intro() {
         <span style={{color: "#788097", fontSize: "15px"}}>
             Trust, Disintermediation and faster Transactions.
         </span> 
-        
+
+        {/* Left slider */}
+        <div className='imgSlider'>
+            
+        </div>
       </div>
     </div>
     {/* right image side */}
@@ -75,8 +79,13 @@ function Intro() {
           height: "11rem",
           left: "-9rem",
         }}
-      ></div>
+      >
+
+      </div>
     </div>
+
+
+    
   </div>
   )
 }

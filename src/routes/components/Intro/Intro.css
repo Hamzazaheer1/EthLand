@@ -109,6 +109,38 @@
   }
   .floating-div:nth-of-type(1){
     /* display: none; */
-    top: -7rem !important;;
+    top: -7rem !important;
+  }
+}
+
+
+.imgSlider{
+  margin-top: 5rem;
+  border-radius: 4%;
+  border-style: solid;
+  border-color: var(--orange);
+  width: 80%;
+  height: 250px;
+  background-image: url("../../../img/land1.jpg");
+  background-size: 100% 100%;
+  animation: changeImage 20s linear infinite;
+
+}
+
+@keyframes changeImage {
+  0% {
+    background-image: url("../../../img/land1.jpg");
+  }
+  25% {
+    background-image: url("../../../img/land2.jpg");
+  }
+  50% {
+    background-image: url("../../../img/land1.jpg");
+  }
+  75% {
+    background-image: url("../../../img/land2.jpg");
+  }
+  100% {
+    background-image: url("../../../img/land1.jpg");
   }
 }
