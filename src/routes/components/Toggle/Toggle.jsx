@@ -3,6 +3,7 @@ import { themeContext } from "../../../Context";
 import "./Toggle.css";
 import Moon from "@iconscout/react-unicons/icons/uil-moon";
 import Sun from "@iconscout/react-unicons/icons/uil-sun";
+import { color } from "@mui/system";
 
 
 const Toggle = () => {

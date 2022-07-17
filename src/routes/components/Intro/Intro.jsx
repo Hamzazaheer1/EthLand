@@ -18,7 +18,7 @@ function Intro() {
     <div className="i-left">
       <div className="i-name">
         {/* yahan change hy darkmode ka */}
-        <span >Welcome to</span>
+        <span>Welcome to</span>
         <span>Eth Land</span>
         <span>
           Eth Land is Blockchain based Land Record System with overall objective to improve

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "./SuperAdminDashboard.css"
 import MainDash from "../SuperAdmincomponents/MainDash/MainDash"
 import ChangeCO from '../SuperAdmincomponents/ChangeCO/ChangeCO';
+import AddAdmin from '../SuperAdmincomponents/AddAdmin/AddAdmin';
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
@@ -42,7 +43,7 @@ function SuperAdminDashboard() {
         animate={window.innerWidth<=768?`${expanded}`:''}
         >
           {/* logo */}
-          <div className="logo" style={{marginLeft: "2rem"}}>
+          <div className="logo" style={{marginLeft: "2rem", marginBottom: "2rem"}}>
             <span style={{fontSize: "1.8rem"}}>
               Super<span style={{fontSize: "2.5rem"}}>A</span>dmin
             </span>
@@ -71,10 +72,20 @@ function SuperAdminDashboard() {
                   }}>
                   <UilUsersAlt/> ChangeCO
                 </button>  
+
+                <button className="button" 
+                style={{ height: "2.1rem" ,width: "10rem", 
+                alignItems: 'center' , marginTop: "2rem",
+                color: 'black', fontWeight: "bold", alignContent: "center"}} onClick={()=>{
+                    setSelectedTab(2);
+                  }}>
+                  <UilUsersAlt/> Add Admin
+                </button>  
               </div>
 
                 {selectedTab === 0 && <MainDash/>}
                 {selectedTab === 1 && <ChangeCO/>}
+                {selectedTab === 2 && <AddAdmin/>}
             </div>
             
 

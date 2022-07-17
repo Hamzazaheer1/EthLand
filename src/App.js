@@ -6,6 +6,7 @@ import {
 import Navbar from './routes/components/Navbar/Navbar';
 import AdminLogin from './routes/components/AdminLogin/Login'
 import SuperAdminDashboard from './routes/components/SuperAdminDashboard/SuperAdminDashboard'
+import Help from "./routes/components/Help/help"
 import { useContext } from "react";
 import { themeContext } from "./Context";
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Navbar />} />
         <Route path="/login" element={< AdminLogin/>} /> 
         <Route path="/superadmindashboard" element={< SuperAdminDashboard/>} /> 
+        <Route path="/help" element={<Help/>}></Route>
         {/* <Route path="/login/superadmindashboard" element={<SuperAdminDashboard/>}/> */}
     </Routes>
     </div>

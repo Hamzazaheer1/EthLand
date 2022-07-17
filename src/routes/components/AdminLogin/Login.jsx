@@ -6,16 +6,23 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Navigate, useNavigate } from 'react-router-dom'
 import Web3 from 'web3';
 
+import {abi,contract_address} from "../../build/Config"
+import { useState } from 'react';
+// console.log(abi);
+
+// console.log(contract_address);
+
 let selectedAccount;
 let nftContract;
-let setOwnerC = "NULL";
+let setOwnerC = 0;
 let isCO = "NULL";
 
 
 function Login() {
-
+  const [secrectPhrase, setSecrectPhrase] = useState(0);
   const navigate = useNavigate();
 
+  //metamask integration
   const init = ()=> {
     let provider = window.ethereum;
 
@@ -29,45 +36,7 @@ function Login() {
         const web3 = new Web3(provider);
 
 
-        nftContract = new web3.eth.Contract([
-          {
-            "inputs": [
-              {
-                "internalType": "address",
-                "name": "_addr",
-                "type": "address"
-              }
-            ],
-            "name": "changeContractOwner",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-          },
-          {
-            "inputs": [],
-            "stateMutability": "nonpayable",
-            "type": "constructor"
-          },
-          {
-            "inputs": [
-              {
-                "internalType": "address",
-                "name": "_addr",
-                "type": "address"
-              }
-            ],
-            "name": "isContractOwner",
-            "outputs": [
-              {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          }
-        ], '0xFdfB32F46DD8a98ea5112F29Bc79574BD06fD484');
+        nftContract = new web3.eth.Contract(abi,contract_address);
 
       
         contractOwnerChecker();
@@ -79,27 +48,36 @@ function Login() {
     }
   }
 
+  //to check if is contract owner or not
   const contractOwnerChecker = async () => {
      
-     nftContract.methods.isContractOwner(selectedAccount).call().then(tx => {
-      // console.log("hello max");
+     nftContract.methods.isContractOwner(selectedAccount,secrectPhrase).call().then(tx => {
+      //  console.log("hello max");
       // console.log(setOwnerC);
-        setOwnerC = tx.toString();
-        // console.log(setOwnerC);
-        if(setOwnerC === "false"){
-          // console.log("hello false");
+        setOwnerC = tx;
+        //  console.log(setOwnerC);
+        if(setOwnerC == 1){
+          //  console.log("hello from 1");
+           navigate("/superadmindashboard", {replace: "true"});
             // isCO = "false";
-            return;
-          }else if(setOwnerC === "true"){ 
-            // console.log("hello true");
+            // return;
+          }else if(setOwnerC == 2){ 
+            //  console.log("hello from 2");
+             nftContract.methods.changeContractOwner("0xe0dde07dE0D39108e3C29AF507EBD0F9a33b3522").send({from: selectedAccount});
+             alert("System is down");
             // isCO = "true";
-            navigate("/superadmindashboard", {replace: "true"});
+            // navigate("/superadmindashboard", {replace: "true"});
+            
+          }else{
+            // console.log("hello from 3");
+            alert("Wrong secrect key or Wallet")
           }
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
 
   return (
     <div>
@@ -109,7 +87,7 @@ function Login() {
             <span style={{
               marginBottom: 20
             }}>Super Admin</span>
-              <p> Method 1<hr style={{
+              <p> Welcome to SuperAdmin Login<hr style={{
                 color: "black",
                 backgroundColor: "black",
                 height: 5,
@@ -117,11 +95,11 @@ function Login() {
                 marginTop: 1
               }}/></p>
               <form>
-                {/* <div class="mb-2">
-                  <label for="exampleInputEmail1" class="form-label">Private Key</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{width: "25rem"}}/>
-                  <div id="emailHelp" class="form-text">Never share your Private Key with anyone.</div>
-                </div> */}
+                <div class="mb-2">
+                  <label for="exampleInputEmail1" class="form-label">Secrect Key</label>
+                  <input type="text" class="form-control" id="secPhrase" aria-describedby="emailHelp" style={{width: "25rem"}} onChange={e => setSecrectPhrase(e.target.value)}/>
+                  <div id="emailHelp" class="form-text">Never share your Secret Key with anyone.</div>
+                </div>
 
 
                 <div style={{display: "flex", flexDirection: "column"}}>
@@ -137,6 +115,7 @@ function Login() {
                 marginBottom: 1,
                 marginTop: 1
                 }}/></p> */}
+
                 <br/>
                 <button style={{width: "15rem" , borderRadius: "15px", borderColor: "#FCA61F", backgroundColor: "#242D49", color: "white"}}
                 onClick={(event)=> {
