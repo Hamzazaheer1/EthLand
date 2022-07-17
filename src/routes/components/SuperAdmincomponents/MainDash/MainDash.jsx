@@ -4,9 +4,8 @@ import "./MainDash.css";
 const MainDash = () => {
   return (
     <div className="MainDash">
-      <h1>Super Admin Dashboard</h1>
-      {/* <Cards />
-      <Table /> */}
+      <h1>Welcome to Super Admin Dashboard</h1>
+      
     </div>
   );
 };

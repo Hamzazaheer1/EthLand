@@ -5,7 +5,7 @@ import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const ChangeCO = () => {
   return (
-    <div className="services" id="services" style={{marginTop: "5rem"}}>
+    <div className="services" id="services" style={{marginTop: "35rem"}}>
       <div className="awesome">
         <span>Transfer</span>
         <span style={{

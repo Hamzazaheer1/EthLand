@@ -21,8 +21,9 @@ function App() {
     >
       <Routes >
         <Route path="/" element={<Navbar />} />
-        <Route path="login" element={< AdminLogin/>}/>
-        <Route path="superadmindashboard" element={<SuperAdminDashboard/>}/>
+        <Route path="/login" element={< AdminLogin/>} /> 
+        <Route path="/superadmindashboard" element={< SuperAdminDashboard/>} /> 
+        {/* <Route path="/login/superadmindashboard" element={<SuperAdminDashboard/>}/> */}
     </Routes>
     </div>
   );
