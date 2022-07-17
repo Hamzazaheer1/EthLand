@@ -117,17 +117,17 @@ function Login() {
                 marginTop: 1
               }}/></p>
               <form>
-                <div class="mb-2">
+                {/* <div class="mb-2">
                   <label for="exampleInputEmail1" class="form-label">Private Key</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{width: "25rem"}}/>
                   <div id="emailHelp" class="form-text">Never share your Private Key with anyone.</div>
-                </div>
+                </div> */}
 
 
                 <div style={{display: "flex", flexDirection: "column"}}>
-                <button type="submit" class="btn btn-primary" style={{marginBottom: "5rem" ,width: "max-content", backgroundColor: "#242D49" , borderColor: "#FCA61F"}}>Login</button>
+                {/* <button type="submit" class="btn btn-primary" style={{marginBottom: "5rem" ,width: "max-content", backgroundColor: "#242D49" , borderColor: "#FCA61F"}}>Login</button> */}
 
-                <p style={{
+                {/* <p style={{
                   color: "grey",
                   fontSize: "15px"
                 }}> Method 2<hr style={{
@@ -136,7 +136,8 @@ function Login() {
                 height: 5,
                 marginBottom: 1,
                 marginTop: 1
-                }}/></p>
+                }}/></p> */}
+                <br/>
                 <button style={{width: "15rem" , borderRadius: "15px", borderColor: "#FCA61F", backgroundColor: "#242D49", color: "white"}}
                 onClick={(event)=> {
                   event.preventDefault();
