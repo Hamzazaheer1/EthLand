@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<Navbar />} />
         <Route path="/login" element={< AdminLogin/>} /> 
         <Route path="/superadmindashboard" element={< SuperAdminDashboard/>} /> 
-        <Route path="/help" element={<Help/>}></Route>
+        {/* <Route path="/help" element={<Help/>}></Route> */}
         <Route path="/gettingstartedhelp" element={<GettingStartedHelp/>}></Route>
         <Route path="/userregisterhelp" element={<UserRegisterHelp/>}></Route>
         <Route path="/userloginhelp" element={<UserLoginHelp/>}></Route>
