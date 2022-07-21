@@ -20,7 +20,8 @@
     "react-scripts": "4.0.2",
     "react-scroll": "^1.8.7",
     "web-vitals": "^2.1.4",
-    "web3": "^1.7.4"
+    "web3": "^1.7.4",
+    "contracts": "file:../../backend/build/contracts"
   },
   "scripts": {
     "start": "react-scripts start",

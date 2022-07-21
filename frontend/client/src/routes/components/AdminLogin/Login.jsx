@@ -6,7 +6,9 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Navigate, useNavigate } from 'react-router-dom'
 import Web3 from 'web3';
 
-import {abi,contract_address} from "../../build/Config"
+
+// import {abi,contract_address} from "../../build/Config"
+import Land from "contracts/Land.json"
 import { useState } from 'react';
 // console.log(abi);
 
@@ -35,8 +37,8 @@ function Login() {
         // console.log("selected account is ", selectedAccount);
         const web3 = new Web3(provider);
 
-
-        nftContract = new web3.eth.Contract(abi,contract_address);
+        // const networkId = web3.eth.net.getId();
+        nftContract = new web3.eth.Contract(Land.abi,"0x9Ae26d194E6e25Fb8A99412eA9D7A1ba7254FBA1");
 
       
         contractOwnerChecker();
