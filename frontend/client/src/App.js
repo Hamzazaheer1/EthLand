@@ -3,13 +3,15 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Navbar from './routes/components/Navbar/Navbar';
-import AdminLogin from './routes/components/AdminLogin/Login'
-import SuperAdminDashboard from './routes/components/SuperAdminDashboard/SuperAdminDashboard'
-import Help from "./routes/components/Help/Navbar"
-import GettingStartedHelp from "./routes/components/Help/pages/GettingStartedHelp"
-import UserRegisterHelp from "./routes/components/Help/pages/UserRegisterHelp"
-import UserLoginHelp from "./routes/components/Help/pages/UserLoginHelp"
+import Navbar from './components/Navbar/Navbar';
+import AdminLogin from './components/AdminLogin/Login'
+import SuperAdminDashboard from './components/SuperAdminDashboard/SuperAdminDashboard'
+import Help from "./components/Help/Navbar"
+import GettingStartedHelp from "./components/Help/pages/GettingStartedHelp"
+import UserRegisterHelp from "./components/Help/pages/UserRegisterHelp"
+import UserLoginHelp from "./components/Help/pages/UserLoginHelp"
+import ContactUs from "./components/ContactUs/ContactUs"
+import AboutUs from "./components/AboutUs/AboutUs"
 
 import { useContext } from "react";
 import { themeContext } from "./Context";
@@ -28,12 +30,11 @@ function App() {
         <Route path="/" element={<Navbar />} />
         <Route path="/login" element={< AdminLogin/>} /> 
         <Route path="/superadmindashboard" element={< SuperAdminDashboard/>} /> 
-        {/* <Route path="/help" element={<Help/>}></Route> */}
         <Route path="/gettingstartedhelp" element={<GettingStartedHelp/>}></Route>
         <Route path="/userregisterhelp" element={<UserRegisterHelp/>}></Route>
         <Route path="/userloginhelp" element={<UserLoginHelp/>}></Route>
-
-        {/* <Route path="/login/superadmindashboard" element={<SuperAdminDashboard/>}/> */}
+        <Route path="/contactus" element={<ContactUs/>}></Route>
+        <Route path="/aboutus" element={<AboutUs/>}></Route>
     </Routes>
     </div>
   );
