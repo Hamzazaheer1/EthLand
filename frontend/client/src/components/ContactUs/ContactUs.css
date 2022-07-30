@@ -83,3 +83,19 @@
     filter: blur(72px);
   }
   
+  @media all and (max-width: 1366px) {
+    .wholePage {
+      height: 79.6vh;
+    }
+
+    .customerSupport {
+      height: 20rem;
+      margin-top: -1rem;
+    }
+
+    .Sdiv2 {
+      margin-left: 5rem;
+    }
+
+    
+  }

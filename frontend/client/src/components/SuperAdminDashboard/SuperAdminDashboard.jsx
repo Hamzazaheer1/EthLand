@@ -87,8 +87,7 @@ function SuperAdminDashboard() {
               </div>
 
               {/* signoutIcon */}
-              <div className="menuItem button mybutton"
-              style={{width: "4rem"}}>
+              <div className="menuItem button mybutton">
                 <UilSignOutAlt onClick={() => {
                   navigate("/login");
                 }} />

@@ -14,7 +14,8 @@
 }
 
 .n-name {
-  font-size: 1.3rem;
+  margin-top: 6px;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .n-right {
@@ -44,8 +45,16 @@
   flex: 2;
 }
 
-@media screen and (max-width: 480px) {
-  .n-list {
-    display: none;
+
+@media all and (max-width: 1366px) {
+  .navBtn {
+    height: 3rem;
+    padding-top: 10px;
   }
+
+  .n-name {
+    font-size: 1.9rem;
+    margin-top: 2px;
+  }
+
 }

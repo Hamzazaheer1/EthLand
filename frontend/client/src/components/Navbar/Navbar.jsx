@@ -24,23 +24,23 @@ function Navbar() {
           <ul style={{ listStyleType: "none" }}>
             <li>
             <Link to="aboutus" spy={true} smooth={true}>
-              <button className="button n-button" style={{marginTop: "1rem"}}>AboutUs</button>
+              <button className="button n-button navBtn" style={{marginTop: "1rem"}}>AboutUs</button>
             </Link>
             </li>
             <li>
               <Link to="contactus" spy={true} smooth={true}>
-              <button className="button n-button" style={{marginTop: "1rem"}}>ContactUs</button>
+              <button className="button n-button navBtn" style={{marginTop: "1rem"}}>ContactUs</button>
               </Link>
             </li>
             <li>
               <Link to="gettingstartedhelp" spy={true} smooth={true}>
-              <button className="button n-button" style={{marginTop: "1rem"}}>Help</button>
+              <button className="button n-button navBtn" style={{marginTop: "1rem"}}>Help</button>
               </Link>
             </li>
           </ul>
         </div>
         <Link to="login" spy={true} smooth={true}>
-        <button className="button n-button">Login</button>
+        <button className="button n-button navBtn">Login</button>
         </Link>
       </div>
       

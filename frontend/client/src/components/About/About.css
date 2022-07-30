@@ -130,3 +130,20 @@
     left: 18rem;
     top: 8rem;
 }
+
+.btnExtLink {
+    width: 15rem;
+    margin-bottom: 3rem;
+}
+
+@media all and (max-width: 1366px) {
+    .works {
+        margin-top: 10rem;
+        margin-bottom: 3rem;
+    }
+
+    .btnExtLink {
+        width: 18rem;
+        height: 3.5rem;
+    }
+}

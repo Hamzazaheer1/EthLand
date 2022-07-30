@@ -10,7 +10,7 @@ function ContactUs() {
     const navigate = useNavigate();
 
     return (
-        <>
+        <div wholeDiv>
             <div className="aboutusDiv1">
                 <div className="aboutusDiv2">
                     <span>EthLand</span>
@@ -33,11 +33,11 @@ function ContactUs() {
                         making our organization healthier and sustainable.
                         God Bless Us All</p>
                     <h3 style={{ color: "var(--orange)" }}>Director General</h3>
-                    <p style={{backgroundColor: "#DDF8FE"}}>Based upon the EthLand futuristic approach of transforming the manual land records management into 
+                    <p className='quote'>Based upon the EthLand futuristic approach of transforming the manual land records management into 
                         an efficient, accountable, secure, distributed and transparent system through integrated technology solution, 
                         this property registration system was envisaged.</p>
 
-                    <div className="SAblur1 s-blur1" style={{ background: "#ABF1FF94" }}></div>
+                    <div className="SAblur1 s-blur1"></div>
                 </div>
 
                 <div
@@ -48,13 +48,12 @@ function ContactUs() {
 
             </div>
             {/* signoutIcon */}
-            <div className="menuItem button LoginGoBackbutton"
-                style={{ width: "4rem" }}>
+            <div className="menuItem button LoginGoBackbutton">
                 <UilSignOutAlt onClick={() => {
                     navigate("/");
                 }} />
             </div>
-        </>
+        </div>
     )
 }
 

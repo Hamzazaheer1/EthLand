@@ -15,30 +15,30 @@ const AddAdmin = () => {
           <div className='container'>
             <div className='row'>
               <div className='col-sm-12'>
-                <label for="exampleInputEmail1" class="form-label">Admin Public Address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{ width: "31.5rem" }} />
+                <label for="AdminAddress" class="form-label">Admin Public Address<span style={{color: "#ff0000", marginLeft: "3px"}}>*</span></label>
+                <input type="text" class="form-control" id="AdminAddress" aria-describedby="AdminAddress" required style={{ width: "31.5rem" }} />
               </div>
             </div>
             <br />
             <div className='row'>
               <div className='col-sm-6'>
-                <label for="exampleInputEmail1" class="form-label">Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{ width: "15rem" }} />
+                <label for="Name" class="form-label">Name<span style={{color: "#ff0000", marginLeft: "3px"}}>*</span></label>
+                <input type="text" class="form-control" id="Name" aria-describedby="Name" required style={{ width: "15rem" }} />
               </div>
               <div className='col-sm-6'>
-                <label for="exampleInputEmail1" class="form-label">Age</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{ width: "15rem" }} />
+                <label for="Age" class="form-label">Age<span style={{color: "#ff0000", marginLeft: "3px"}}>*</span></label>
+                <input type="number" class="form-control" id="Age" aria-describedby="Age" required style={{ width: "15rem" }} />
               </div>
             </div>
             <br />
             <div className='row'>
               <div className='col-sm-6'>
-                <label for="exampleInputEmail1" class="form-label">Designation</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{ width: "15rem" }} />
+                <label for="Designation" class="form-label">Designation<span style={{color: "#ff0000", marginLeft: "3px"}}>*</span></label>
+                <input type="text" class="form-control" id="Designation" aria-describedby="Designation" required style={{ width: "15rem" }} />
               </div>
               <div className='col-sm-6'>
-                <label for="exampleInputEmail1" class="form-label">City</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{ width: "15rem" }} />
+                <label for="City" class="form-label">City<span style={{color: "#ff0000", marginLeft: "3px"}}>*</span></label>
+                <input type="text" class="form-control" id="City" aria-describedby="City" required style={{ width: "15rem" }} />
               </div>
             </div>
             <br />

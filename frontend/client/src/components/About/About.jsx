@@ -36,7 +36,7 @@ const About = () => {
                         <br />
                         ispum is simpley dummy text of printing
                     </spane>
-                    <button className="button s-button" style={{ width: "15rem", alignContent: "center" }}
+                    <button className="button s-button btnExtLink"
                         onClick={() => window.open("https://en.wikipedia.org/wiki/Blockchain", "_blank")}>
                         Learn More About Blockchain
                     </button>

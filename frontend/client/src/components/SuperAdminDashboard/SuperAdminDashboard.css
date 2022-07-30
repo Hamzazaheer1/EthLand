@@ -98,13 +98,14 @@
 .menu .menuItem:last-child {
   position: absolute;
   bottom: 2.3rem;
-  width: 100%;
+  width: 4rem;
 }
 
 .active {
   background: var(--activeItem);
   margin-left: 0;
 }
+
 .active::before {
   content: "";
   width: 8px;
@@ -121,4 +122,23 @@
   color: black;
   font-weight: bold;
   align-content: center;
+}
+
+@media all and (max-width: 1366px) {
+  .sidebar {
+    width: 130%;
+  }
+
+  .menuItem {
+    margin-top: 2rem;
+  }
+
+  .menu .menuItem:last-child {
+    width: 35%;
+  }
+
+  .mybutton {
+    width: 12rem;
+    height: 3rem;
+  }
 }

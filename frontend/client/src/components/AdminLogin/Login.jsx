@@ -104,20 +104,14 @@ function Login() {
           style={{ background: "var(--purple)" }}
         >
         </div>
-        
       </div>
       {/* signoutIcon */}
-      <div className="menuItem button LoginGoBackbutton"
-        style={{ width: "4rem" }}>
+      <div className="menuItem button LoginGoBackbutton">
         <UilSignOutAlt onClick={() => {
           navigate("/");
         }} />
       </div>
     </>
-
-
-
-
 
   )
 }

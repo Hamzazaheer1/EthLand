@@ -60,7 +60,7 @@
   
   .LoginGoBackbutton {
     height: 2rem;
-    width: 10rem;
+    width: 4rem;
     align-items: center;
     margin-bottom: 2rem;
     margin-right: 10rem;
@@ -82,4 +82,33 @@
     left: 56%;
     filter: blur(72px);
   }
-  
+
+  .quote {
+    background-color: #FCA61F;
+    padding-left: 2%;
+  }
+
+  @media all and (max-width: 1366px) {
+    .WholeDiv {
+      width: fit-content;
+      height: 77.3vh;
+    } 
+
+    .aboutusDiv2 {
+      margin-top: -12.5rem;
+    }
+
+    .aboutusDiv2 > :nth-child(3) {
+      margin-top: 0.4rem;
+    }
+
+    .LoginGoBackbutton {
+      margin-top: -2.2rem;
+      width: 5.5rem;
+      height: 2.5rem;
+    }
+
+    .quote {
+      color: black;
+    }
+  }

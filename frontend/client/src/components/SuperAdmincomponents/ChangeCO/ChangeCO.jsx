@@ -31,6 +31,7 @@ const ChangeCO = () => {
           navigate("/", { replace: "true" });
         }).catch(err => {
           console.log(err);
+          alert("Invalid Public Key")
           return;
         });
     }
@@ -48,8 +49,10 @@ const ChangeCO = () => {
         <form>
           <div className='container'>
             <div class="mb-2">
-              <label for="exampleInputEmail1" class="form-label">Public Key of New Owner</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{ width: "25rem" }} onChange={e => setnewSuperAdmin(e.target.value)} />
+              <label for="SuperAdminPK" class="form-label">Public Key of New Owner<span style={{color: "#ff0000", marginLeft: "3px"}}>*</span></label>
+              <input type="text" class="form-control" id="SuperAdminPK" aria-describedby="SuperAdminPK" required
+              style={{ width: "25rem" }} 
+              onChange={e => setnewSuperAdmin(e.target.value)} />
             </div>
 
 
@@ -57,7 +60,14 @@ const ChangeCO = () => {
               <button onClick={(event) => {
                 event.preventDefault();
                 { init() }
-              }} type="submit" class="btn btn-primary" style={{ marginTop: "1rem", marginBottom: "5rem", width: "max-content", backgroundColor: "#242D49", borderColor: "#FCA61F" }}>Transfer</button>
+              }} type="submit" class="btn btn-primary" 
+              style={{ 
+              marginTop: "1rem", 
+              marginBottom: "5rem", 
+              width: "max-content", 
+              backgroundColor: "#242D49", 
+              borderColor: "#FCA61F" }}
+              >Transfer</button>
             </div>
           </div>
         </form>

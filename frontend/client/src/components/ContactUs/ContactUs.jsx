@@ -3,15 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import "./ContactUs.css"
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
-
+import supportG from '../../img/customerSupport.png'
 
 
 function ContactUs() {
     const navigate = useNavigate();
 
     return (
-        <>
+        <div className='wholePage'>
             <div className="Sdiv1">
+                <img class="customerSupport" src={supportG} alt="support img not working" />
                 <div className="Sdiv2">
                     <span>EthLand</span>
                     <span className='SecondTitle'>
@@ -36,13 +37,12 @@ function ContactUs() {
 
             </div>
             {/* signoutIcon */}
-            <div className="menuItem button LoginGoBackbutton"
-                style={{ width: "4rem" }}>
+            <div className="menuItem button LoginGoBackbutton">
                 <UilSignOutAlt onClick={() => {
                     navigate("/");
                 }} />
             </div>
-        </>
+        </div>
     )
 }
 
