@@ -3,49 +3,24 @@ import "./SuperAdminDashboard.css"
 import MainDash from "../SuperAdmincomponents/MainDash/MainDash"
 import ChangeCO from '../SuperAdmincomponents/ChangeCO/ChangeCO';
 import AddAdmin from '../SuperAdmincomponents/AddAdmin/AddAdmin';
-import { UilBars } from "@iconscout/react-unicons";
-import { motion } from "framer-motion";
-import { UilSignOutAlt } from "@iconscout/react-unicons";
+import ViewAdmin from '../SuperAdmincomponents/ViewAdmin/ViewAdmin';
+
+import { UilSignOutAlt, UilEstate, UilUsersAlt } from "@iconscout/react-unicons";
 import { useNavigate } from "react-router-dom";
 
-// import { Link } from 'react-router-dom';
-// import { SidebarData } from './SADashboardData';
 
-import {
-  UilEstate,
-  UilUsersAlt,
 
-} from "@iconscout/react-unicons";
 
 function SuperAdminDashboard() {
 
   const navigate = useNavigate();
-
-  const [expanded, setExpaned] = useState(true)
   const [selectedTab, setSelectedTab] = useState(0);
-
-
-  const sidebarVariants = {
-    true: {
-      left: '0'
-    },
-    false: {
-      left: '-60%'
-    }
-  }
 
 
   return (
     <div className="SuperAdminApp">
       <div className="AppGlass">
-        <>
-          {/* <div className="bars" style={expanded?{left: '60%'}:{left: '5%'}} onClick={()=>setExpaned(!expanded)}>
-          <UilBars />
-        </div> */}
-          <div className='sidebar'
-          // variants={sidebarVariants}
-          // animate={window.innerWidth<=768?`${expanded}`:''}
-          >
+          <div className='sidebar'>
             {/* logo */}
             <div className="logo">
               <span>
@@ -79,11 +54,19 @@ function SuperAdminDashboard() {
                     }}>
                     <UilUsersAlt /> Add Admin
                   </button>
+
+                  <button className="button mybutton"
+                    onClick={() => {
+                      setSelectedTab(3);
+                    }}>
+                    <UilUsersAlt /> View Admin
+                  </button>
                 </div>
 
                 {selectedTab === 0 && <MainDash />}
                 {selectedTab === 1 && <ChangeCO />}
                 {selectedTab === 2 && <AddAdmin />}
+                {selectedTab === 3 && <ViewAdmin />}
               </div>
 
               {/* signoutIcon */}
@@ -96,7 +79,6 @@ function SuperAdminDashboard() {
 
             </div>
           </div>
-        </>
       </div>
     </div>
   )

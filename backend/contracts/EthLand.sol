@@ -1,33 +1,76 @@
-// SPDX-License-Identifier: UNLICENSED
-
 pragma solidity >= 0.5.2;
 
 contract Land {
-    address contractOwner;
+    address superAdmin;
 
     constructor() public{
-        contractOwner = msg.sender;
+        superAdmin = msg.sender;
     }
 
-    
-    function isContractOwner(address _addr, uint _secP) public returns(uint){
-        uint x = 1;
-        uint y = 2;
-        uint z = 3;
-        if(_addr==contractOwner && _secP == 123)
-            return x;
-        else if(_addr == contractOwner && _secP == 321){
-            contractOwner = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
-            return y;
+    struct Admin {
+        uint id;
+        address _addr;
+        string name;
+        uint age;
+        string designation;
+        string city;
+    }
+
+    uint adminCount;
+
+    mapping(address => Admin) public AdminMapping;
+    mapping(uint => address[]) allAdminList;
+    mapping(address => bool)  RegisteredAdminMapping;
+
+    function isSuperAdmin(address _addr, uint _secP) public returns(uint){
+        if(_addr==superAdmin && _secP == 123)
+            return 1;
+        else if(_addr == superAdmin && _secP == 321){
+            superAdmin = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2; //remove this line
+            return 2;
         }  
         else
-            return z;
+            return 3;
     }
 
-    function changeContractOwner(address _addr)public {
-        require(msg.sender==contractOwner,"you are not contractOwner");
+    function changeSuperAdmin(address _addr)public {
+        require(msg.sender==superAdmin,"you are not superAdmin");
 
-        contractOwner=_addr;
+        superAdmin=_addr;
     }
 
+    //-----------------------------------------------Admin-----------------------------------------------
+
+    function addAdmin(address _addr,string memory _name, uint _age, string memory _designation,string memory _city) public returns(bool){
+        if(superAdmin!=msg.sender)
+            return false;
+        require(superAdmin==msg.sender);
+        RegisteredAdminMapping[_addr]=true;
+        allAdminList[1].push(_addr);
+        AdminMapping[_addr] = Admin(adminCount,_addr,_name, _age, _designation,_city);
+        return true;
+    }
+
+    function ReturnAllAdminList() public view returns(address[] memory)
+    {
+        return allAdminList[1];
+    }
+
+    function removeAdmin(address _addr) public{
+        require(msg.sender==superAdmin,"You are not Super Admin");
+        require(RegisteredAdminMapping[_addr],"Admin not found");
+        RegisteredAdminMapping[_addr]=false;
+
+
+        uint len=allAdminList[1].length;
+        for(uint i=0;i<len;i++)
+        {
+            if(allAdminList[1][i]==_addr)
+            {
+                allAdminList[1][i]=allAdminList[1][len-1];
+                allAdminList[1].pop();
+                break;
+            }
+        }
+    }
 }

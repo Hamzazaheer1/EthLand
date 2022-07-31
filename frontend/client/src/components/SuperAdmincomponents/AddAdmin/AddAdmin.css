@@ -41,3 +41,10 @@
     top: 13rem;
     left: -18rem;
   }
+
+
+@media all and (max-width: 1366px) {
+  .AddAdmindiv1 {
+    margin-top: 25rem;
+  }
+}

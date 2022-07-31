@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 let selectedAccount;
-let nftContract;
+let ContractInstance;
 
 
 const ChangeCO = () => {
@@ -25,16 +25,20 @@ const ChangeCO = () => {
           selectedAccount = accounts[0];
           const web3 = new Web3(provider);
 
-          nftContract = new web3.eth.Contract(Land.abi, Land.networks[5777].address);
+          ContractInstance = new web3.eth.Contract(Land.abi, Land.networks[5777].address);
+          ChangeSuperAdmin();
 
-          nftContract.methods.changeContractOwner(newSuperAdmin).send({ from: selectedAccount });
-          navigate("/", { replace: "true" });
         }).catch(err => {
           console.log(err);
           alert("Invalid Public Key")
           return;
         });
     }
+  }
+
+  const ChangeSuperAdmin = async () => {
+    await ContractInstance.methods.changeSuperAdmin(newSuperAdmin).send({ from: selectedAccount });
+    navigate("/", { replace: "true" });
   }
 
 
@@ -49,10 +53,10 @@ const ChangeCO = () => {
         <form>
           <div className='container'>
             <div class="mb-2">
-              <label for="SuperAdminPK" class="form-label">Public Key of New Owner<span style={{color: "#ff0000", marginLeft: "3px"}}>*</span></label>
+              <label for="SuperAdminPK" class="form-label">Public Key of New Owner<span style={{ color: "#ff0000", marginLeft: "3px" }}>*</span></label>
               <input type="text" class="form-control" id="SuperAdminPK" aria-describedby="SuperAdminPK" required
-              style={{ width: "25rem" }} 
-              onChange={e => setnewSuperAdmin(e.target.value)} />
+                style={{ width: "25rem" }}
+                onChange={e => setnewSuperAdmin(e.target.value)} />
             </div>
 
 
@@ -60,13 +64,14 @@ const ChangeCO = () => {
               <button onClick={(event) => {
                 event.preventDefault();
                 { init() }
-              }} type="submit" class="btn btn-primary" 
-              style={{ 
-              marginTop: "1rem", 
-              marginBottom: "5rem", 
-              width: "max-content", 
-              backgroundColor: "#242D49", 
-              borderColor: "#FCA61F" }}
+              }} type="submit" class="btn btn-primary"
+                style={{
+                  marginTop: "1rem",
+                  marginBottom: "5rem",
+                  width: "max-content",
+                  backgroundColor: "#242D49",
+                  borderColor: "#FCA61F"
+                }}
               >Transfer</button>
             </div>
           </div>

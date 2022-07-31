@@ -6,7 +6,6 @@ import {
 import Navbar from './components/Navbar/Navbar';
 import AdminLogin from './components/AdminLogin/Login'
 import SuperAdminDashboard from './components/SuperAdminDashboard/SuperAdminDashboard'
-import Help from "./components/Help/Navbar"
 import GettingStartedHelp from "./components/Help/pages/GettingStartedHelp"
 import UserRegisterHelp from "./components/Help/pages/UserRegisterHelp"
 import UserLoginHelp from "./components/Help/pages/UserLoginHelp"

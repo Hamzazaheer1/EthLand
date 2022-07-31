@@ -2,14 +2,18 @@ import React from 'react'
 import Web3 from 'web3';
 import Land from "contracts/Land.json"
 import metamasklogo from "../../img/Metamask-icon.png";
+
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
-import "../AdminLogin/login.css"
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
 
+import "../AdminLogin/login.css"
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+
+
 let selectedAccount;
-let nftContract;
+let ContractInstance;
 let setOwnerC = 0;
 
 
@@ -29,9 +33,9 @@ function Login() {
         .then(accounts => {
           selectedAccount = accounts[0];
           const web3 = new Web3(provider);
-          nftContract = new web3.eth.Contract(Land.abi, Land.networks[5777].address);
+          ContractInstance = new web3.eth.Contract(Land.abi, Land.networks[5777].address);
 
-          contractOwnerChecker();
+          superAdminChecker();
 
         }).catch(err => {
           setIsConnected(false);
@@ -41,15 +45,15 @@ function Login() {
     }
   }
 
-  //to check if is contract owner or not
-  const contractOwnerChecker = async () => {
+  //to check if super admin is contract owner or not
+  const superAdminChecker = async () => {
 
-    nftContract.methods.isContractOwner(selectedAccount, secrectPhrase).call().then(tx => {
+    ContractInstance.methods.isSuperAdmin(selectedAccount, secrectPhrase).call().then(tx => {
       setOwnerC = tx;
       if (setOwnerC == 1) {
         navigate("/superadmindashboard", { replace: "true" });
       } else if (setOwnerC == 2) {
-        nftContract.methods.changeContractOwner("0xe0dde07dE0D39108e3C29AF507EBD0F9a33b3522").send({ from: selectedAccount });
+        ContractInstance.methods.changeSuperAdmin("0xe0dde07dE0D39108e3C29AF507EBD0F9a33b3522").send({ from: selectedAccount });
         alert("System is down");
         setIsConnected(false);
       } else {

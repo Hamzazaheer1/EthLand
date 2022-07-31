@@ -11,9 +11,9 @@ function ContactUs() {
 
     return (
         <div className='wholePage'>
-            <div className="Sdiv1">
+            <div className="wholeCU Sdiv1">
                 <img class="customerSupport" src={supportG} alt="support img not working" />
-                <div className="Sdiv2">
+                <div className="contactUsD Sdiv2">
                     <span>EthLand</span>
                     <span className='SecondTitle'>
                         Contact Us.

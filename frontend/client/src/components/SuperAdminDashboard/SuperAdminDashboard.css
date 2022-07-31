@@ -76,7 +76,7 @@
 
 /* menu */
 .menu {
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 .menuItem {
@@ -130,7 +130,7 @@
   }
 
   .menuItem {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 
   .menu .menuItem:last-child {
