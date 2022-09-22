@@ -1,41 +1,51 @@
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import AdminLogin from "./components/AdminLogin/Login";
-import SuperAdminDashboard from "./components/SuperAdminDashboard/SuperAdminDashboard";
-import GettingStartedHelp from "./components/Help/pages/GettingStartedHelp";
-import UserRegisterHelp from "./components/Help/pages/UserRegisterHelp";
-import UserLoginHelp from "./components/Help/pages/UserLoginHelp";
-import ContactUs from "./components/ContactUs/ContactUs";
-import AboutUs from "./components/AboutUs/AboutUs";
-
 import { useContext } from "react";
 import { themeContext } from "./Context";
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./Shared/Homepage/Homepage";
+import AboutUs from "./Shared/AboutUs/AboutUs";
+import ContactUs from "./Shared/ContactUs/ContactUs";
+import HelpNav from "./Shared/Help/HelpNav";
+import Blockchain from "./Shared/Blockchain/Blockchain";
+import GotoTop from "./Utils/GotoTop/GotoTop";
+import AdminPanel from "./Admin/AdminPanel";
+import SuperAdminPanel from "./SuperAdmin/SuperAdminPanel";
+import UserPanel from "./User/UserPanel/UserPanel";
+import Login from "./Shared/Login/Login";
+import Signup from "./User/Signup/Signup";
+
+import "./App.css";
+import TxData from "./Shared/Blockchain/Pages/TxData";
+import NavigationBar from "./Shared/NavigationBar/NavigationBar";
+import Footer from "./Shared/Footer/Footer";
 
 function App() {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
+
   return (
     <div
       className="App"
       style={{
-        background: darkMode ? "black" : "",
+        background: darkMode ? "#212529" : "",
         color: darkMode ? "white" : "",
       }}
     >
+      <NavigationBar />
       <Routes>
-        <Route path="/" element={<Navbar />} />
-        <Route path="/login" element={<AdminLogin />} />
-        <Route path="/superadmindashboard" element={<SuperAdminDashboard />} />
-        <Route
-          path="/gettingstartedhelp"
-          element={<GettingStartedHelp />}
-        ></Route>
-        <Route path="/userregisterhelp" element={<UserRegisterHelp />}></Route>
-        <Route path="/userloginhelp" element={<UserLoginHelp />}></Route>
-        <Route path="/contactus" element={<ContactUs />}></Route>
-        <Route path="/aboutus" element={<AboutUs />}></Route>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/help-panel" element={<HelpNav />} />
+        <Route path="/blockchain" element={<Blockchain />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/superadminpanel" element={<SuperAdminPanel />} />
+        <Route path="/adminpanel" element={<AdminPanel />} />
+        <Route path="/userpanel" element={<UserPanel />} />
+        <Route path="/txdata/:blockid" element={<TxData />} />
       </Routes>
+      <Footer className="sticky-footer" />
+      <GotoTop />
     </div>
   );
 }
