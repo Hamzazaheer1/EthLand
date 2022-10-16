@@ -40,7 +40,6 @@ const Signup = () => {
             CONTACT_ABI,
             CONTACT_ADDRESS
           );
-
           RegisterUser();
         })
         .catch((err) => {
@@ -67,7 +66,7 @@ const Signup = () => {
             <br />
             <br />
             <br />
-            <h2>Signup</h2>
+            <h2>Register</h2>
             <hr />
             <br />
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
