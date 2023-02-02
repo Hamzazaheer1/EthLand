@@ -1,11 +1,11 @@
 .footer {
     display: flex;
     align-items: center;
-    position: relative;
-    
-
+    position: sticky;
+    top: 100%   
 }
-  .f-content {
+
+.f-content {
     position: absolute;
     display: flex;
     align-items: center;
@@ -15,11 +15,12 @@
     margin-top: 4rem;
     gap: 4rem;
     color: var(--black);
-  }
-  .f-icons {
+}
+  
+.f-icons {
     display: flex;
     margin-top: -3rem;
     gap: 2rem;
     
-  }
+}
   

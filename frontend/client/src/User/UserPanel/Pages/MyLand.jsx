@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CONTACT_ADDRESS, CONTACT_ABI } from "../../../contract";
-import { useContext } from "react";
 import { themeContext } from "../../../Context";
-import Web3 from "web3";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Table from "react-bootstrap/Table";
 import { useNavigate } from "react-router-dom";
+import { BsInfoCircleFill } from "react-icons/bs";
+import Container from "react-bootstrap/Container";
+import Table from "react-bootstrap/Table";
+import axios from "axios";
 import LoadingSpinner from "../../../Utils/LoadingSpinner/LoadingSpinner";
+import Web3 from "web3";
 
 const MyLand = () => {
   const Navigate = useNavigate();
-  const [landlist, setLandlist] = useState();
-  const [landData, setLandData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState();
+  const [pkView, setPkView] = useState("");
+  const [showKey, setShowKey] = useState(false);
 
   let selectedAccount;
   let ContractInstance;
@@ -22,70 +22,80 @@ const MyLand = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
 
-  const init = () => {
-    let provider = window.ethereum;
-    if (typeof provider !== "undefined") {
-      provider
-        .request({ method: "eth_requestAccounts" })
-        .then((accounts) => {
-          selectedAccount = accounts[0];
-          const web3 = new Web3(provider);
-          ContractInstance = new web3.eth.Contract(
-            CONTACT_ABI,
-            CONTACT_ADDRESS
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-          return;
-        });
-    }
-  };
+  useEffect(() => {
+    const init = () => {
+      let provider = window.ethereum;
+      if (typeof provider !== "undefined") {
+        provider
+          .request({ method: "eth_requestAccounts" })
+          .then((accounts) => {
+            setPkView(accounts[0]);
+            selectedAccount = accounts[0];
+            const web3 = new Web3(provider);
+            ContractInstance = new web3.eth.Contract(
+              CONTACT_ABI,
+              CONTACT_ADDRESS
+            );
+            getLandsByPK(selectedAccount);
+          })
+          .catch((err) => {
+            console.log(err);
+            return;
+          });
+      }
+    };
 
-  const getLandsId = async () => {
+    init();
+  }, []);
+
+  const getLandsByPK = async (x) => {
     setIsLoading(true);
-    await ContractInstance.methods
-      .myAllLands(selectedAccount)
-      .call()
-      .then((data) => {
-        setLandlist(data);
-      });
-    getLandsData();
-    setIsLoading(false);
-  };
-
-  const getLandsData = async () => {
-    for (let i = 0; i < landlist.length; i++) {
-      await ContractInstance.methods
-        .LandR(landlist[i])
-        .call()
-        .then((data) => {
-          setLandData((prevlandData) => [...prevlandData, data]);
-          console.log(data);
-        });
+    try {
+      const resp = await axios.get(
+        `https://landbackend-production.up.railway.app/api/v1/lands/getlandbyPK/${x}`
+      );
+      setResponse(resp.data.data);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  if (isLoading) {
+    return <LoadingSpinner asOverlay />;
+  }
 
   return (
-    <Container>
-      {init()}
-      <br />
-      <Row>
-        <Col sm={8} className="mt-3">
-          <h2>My Lands</h2>
-        </Col>
-        <Col sm={4} className="mt-2">
-          <button
-            className="y-btn"
-            onClick={() => {
-              getLandsId();
-            }}
-          >
-            Reveal My Lands
-          </button>
-        </Col>
-      </Row>
-      <br />
+    <Container className="mt-5" style={{ minHeight: "100vh" }}>
+      <h2 style={{ color: "var(--yellow)", display: "flex" }}>
+        My Lands
+        <BsInfoCircleFill
+          style={{
+            height: "1rem",
+            marginTop: "8px",
+            color: "black",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            setShowKey(!showKey);
+          }}
+        />
+      </h2>
+      <p style={{ color: "gray", fontSize: "1rem", marginLeft: "1rem" }}>
+        {showKey && (
+          <p>
+            Your Public Key:{" "}
+            <span style={{ marginLeft: "5px", color: "black" }}>{pkView}</span>
+          </p>
+        )}
+      </p>
+      <hr
+        style={{
+          color: darkMode ? "var(--yellow)" : "var(--black)",
+          border: "2px solid",
+        }}
+      />
+
       <Table
         responsive="sm"
         bordered
@@ -96,55 +106,40 @@ const MyLand = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Khaiwat No</th>
-            {/* <th>Khatuni No</th> */}
             <th>Location</th>
-            <th>KhasraNumber</th>
+            <th>Khaiwat No.</th>
+            <th>Khasra No.</th>
             <th>Area</th>
-            <th>Price</th>
-            <th>IsVerified</th>
-            <th>IsForSale</th>
+            <th>Is For Sale</th>
             <th>Action</th>
           </tr>
         </thead>
-        {isLoading ? (
-          <LoadingSpinner asOverlay />
-        ) : (
-          <tbody>
-            {landData.length > 0 ? (
-              landData.map((item, index) => (
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{item.khaiwatNumber}</td>
-                  {/* <td>{item.KhatuniCultivatorNo}</td> */}
-                  <td>{item.location}</td>
-                  <td>{item.khasraNo}</td>
-                  <td>{item.specificAreainaccordancewiththeShare}</td>
-                  <td>{item.landPrice}</td>
-                  {item.isLandVerified ? (
-                    <td>Verified</td>
-                  ) : (
-                    <td>Not Verified</td>
-                  )}
-                  {item.isforSell ? <td>True</td> : <td>False</td>}
-                  <td>
-                    <button
-                      className="y-btn"
-                      style={{ height: "2rem", padding: "0px 10px 0px 10px" }}
-                      onClick={() => {
-                        Navigate(`/detailed-info/${item.khaiwatNumber}`);
-                      }}
-                    >
-                      Detailed Info
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <p>No data to be found....</p>
-            )}
-          </tbody>
-        )}
+        <tbody>
+          {response &&
+            response.map((item, index) => (
+              <tr key={index + 1}>
+                <td>{index + 1}</td>
+                <td>{item.location}</td>
+                <td>{item.khaiwatNo}</td>
+                <td>{item.khasraNumber}</td>
+                <td>{item.area}</td>
+                <td>
+                  {item.isForSale ? <span>True</span> : <span>False</span>}
+                </td>
+                <td>
+                  <button
+                    className="g-btn"
+                    style={{ height: "2rem", padding: "0px 10px 0px 10px" }}
+                    onClick={() => {
+                      Navigate(`/detailed-info/${item._id}`);
+                    }}
+                  >
+                    Detailed Info
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
       </Table>
     </Container>
   );

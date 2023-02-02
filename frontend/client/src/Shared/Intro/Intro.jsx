@@ -1,28 +1,22 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Row, Col } from "react-bootstrap";
+import { motion } from "framer-motion";
+import { themeContext } from "../../Context";
+import { Typewriter } from "react-simple-typewriter";
 import Map from "../img/map.png";
 import Carousel from "react-bootstrap/Carousel";
 import land1 from "../img/land1.jpg";
 import land2 from "../img/land2.jpg";
-import Vector1 from "../img/Vector1.png";
-import Vector2 from "../img/Vector2.png";
-import boy from "../img/boy.png";
 import Home from "../img/home.png";
-import item1 from "../img/item1.png";
 import thumbup from "../img/thumbup.png";
 import crown from "../img/crown.png";
-
 import FloatinDiv from "../../Utils/FloatingDiv/FloatingDiv";
-// import { motion } from "../../../node_modules/framer-motion/dist/es/index";
-import { motion } from "framer-motion";
-
-import { useContext } from "react";
-import { themeContext } from "../../Context";
 import "./Intro.css";
 
 const Intro = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
+
   return (
     <Row>
       <div
@@ -34,7 +28,6 @@ const Intro = () => {
             <span
               style={{
                 color: darkMode ? "white" : "var(--black)",
-                // color: "var(--black)",
                 fontWeight: "bold",
                 fontSize: "3rem",
               }}
@@ -49,7 +42,15 @@ const Intro = () => {
                 fontSize: "3rem",
               }}
             >
-              Eth Land
+              <Typewriter
+                words={["Eth Land", "Decentralized land record system"]}
+                loop={5}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
             </span>
             <br />
             <br />
@@ -93,8 +94,12 @@ const Intro = () => {
           </Col>
           <Col sm={3}></Col>
           <Col sm={5}>
-            <img className="img-fluid" style={{ height: "30rem" }} src={Map} />
-            {/* animations */}
+            <img
+              className="img-fluid"
+              style={{ height: "30rem" }}
+              src={Map}
+              alt={"img not found"}
+            />
             <motion.div
               animate={{ x: 100 }}
               transition={{ ease: "easeOut", duration: 2 }}
@@ -124,7 +129,6 @@ const Intro = () => {
               transition={{ ease: "easeOut", duration: 2 }}
               className="floating"
             >
-              {/* floatinDiv mein change hy dark mode ka  */}
               <FloatinDiv
                 img={thumbup}
                 text1="Durability"

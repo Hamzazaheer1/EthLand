@@ -1,11 +1,6 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { Row, Col } from "react-bootstrap";
 import { themeContext } from "../../Context";
-// import { motion } from "framer-motion";
-import i1 from "../img/0.PNG";
-import i2 from "../img/1.PNG";
-import i3 from "../img/2.PNG";
 import Card from "react-bootstrap/Card";
 import "./About.css";
 
@@ -55,7 +50,7 @@ const About = () => {
           <br />
           <br />
           <button
-            className="y-btn"
+            className="g-btn"
             onClick={() =>
               window.open("https://en.wikipedia.org/wiki/Blockchain", "_blank")
             }
@@ -66,19 +61,17 @@ const About = () => {
         <Col sm={2}></Col>
       </Row>
       <Row style={{ marginLeft: "1rem", marginTop: "8rem" }}>
-        <Col sm={1} className="mt-5"></Col>
-        <Col sm={10} style={{ marginLeft: "2rem" }}>
+        <Col sm={2}></Col>
+        <Col sm={8}>
           <Row>
             <Card
+              className="cardAllign"
               style={{
                 width: "18rem",
-                color: "white",
-                marginRight: "5rem",
-                marginTop: "1rem",
               }}
               bg="dark"
             >
-              <Card.Img variant="top" src={i1} height={"250rem"} />
+              <Card.Img variant="top" src={"/images/0.png"} height={"250rem"} />
               <Card.Body>
                 <Card.Title>Web2</Card.Title>
                 <Card.Text>
@@ -86,7 +79,7 @@ const About = () => {
                   on a single server.
                 </Card.Text>
                 <button
-                  className="y-btn"
+                  className="g-btn"
                   onClick={() =>
                     window.open(
                       "https://www.spiceworks.com/tech/tech-general/articles/web-2-vs-web-3/",
@@ -99,22 +92,24 @@ const About = () => {
               </Card.Body>
             </Card>
             <Card
+              className="cardAllign"
               style={{
                 width: "18rem",
-                color: "white",
-                marginRight: "5rem",
-                marginTop: "1rem",
               }}
               bg="dark"
             >
-              <Card.Img variant="top" src={i2} height={"250rem"} />
+              <Card.Img
+                variant="top"
+                src={"/images/1.jpeg"}
+                height={"250rem"}
+              />
               <Card.Body>
                 <Card.Title>BlockChain</Card.Title>
                 <Card.Text>
                   A new way of keeping a shared transaction record(database).
                 </Card.Text>
                 <button
-                  className="y-btn"
+                  className="g-btn"
                   onClick={() =>
                     window.open(
                       "https://www.slideshare.net/JohnMirkovic/blockchain-for-land-records-and-real-estate",
@@ -126,11 +121,8 @@ const About = () => {
                 </button>
               </Card.Body>
             </Card>
-            <Card
-              style={{ width: "18rem", color: "white", marginTop: "1rem" }}
-              bg="dark"
-            >
-              <Card.Img variant="top" src={i3} height={"250rem"} />
+            <Card style={{ width: "18rem", color: "white" }} bg="dark">
+              <Card.Img variant="top" src={"/images/2.png"} height={"250rem"} />
               <Card.Body>
                 <Card.Title>Web3</Card.Title>
                 <Card.Text>
@@ -138,7 +130,7 @@ const About = () => {
                   (decentralization).
                 </Card.Text>
                 <button
-                  className="y-btn"
+                  className="g-btn"
                   onClick={() =>
                     window.open(
                       "https://www.slideshare.net/JohnMirkovic/blockchain-for-land-records-and-real-estate",
@@ -152,7 +144,7 @@ const About = () => {
             </Card>
           </Row>
         </Col>
-        <Col sm={1}></Col>
+        <Col sm={2}></Col>
       </Row>
     </div>
   );

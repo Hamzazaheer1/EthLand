@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-// import NavigationBar from "../../Shared/NavigationBar/NavigationBar";
-// import Footer from "../../Shared/Footer/Footer";
-import Nav from "react-bootstrap/Nav";
+import React, { useState, useContext } from "react";
 import { Container } from "react-bootstrap";
-import { useContext } from "react";
 import { themeContext } from "../../Context";
+import Nav from "react-bootstrap/Nav";
 import UWelcome from "./Pages/UWelcome";
-import AddLand from "./Pages/AddLand";
 import MyLand from "./Pages/MyLand";
 import SendRequests from "./Pages/SendRequests";
 import ReceiveRequests from "./Pages/ReceiveRequests";
+import PurchaseableLands from "./Pages/PurchaseableLands";
+import LandForSale from "./Pages/LandForSale";
 
 const UserPanel = () => {
   const theme = useContext(themeContext);
@@ -18,7 +16,6 @@ const UserPanel = () => {
 
   return (
     <div>
-      {/* <NavigationBar /> */}
       <Container>
         <Nav
           variant="tabs"
@@ -44,20 +41,6 @@ const UserPanel = () => {
               onClick={() => {
                 setSelectedTab(1);
               }}
-              eventKey="link-2"
-              href=""
-              style={{
-                color: darkMode ? "var(--yellow)" : "var(--dark)",
-              }}
-            >
-              Add Land
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link
-              onClick={() => {
-                setSelectedTab(2);
-              }}
               eventKey="link-3"
               href=""
               style={{
@@ -70,7 +53,7 @@ const UserPanel = () => {
           <Nav.Item>
             <Nav.Link
               onClick={() => {
-                setSelectedTab(3);
+                setSelectedTab(2);
               }}
               eventKey="link-4"
               href=""
@@ -84,7 +67,7 @@ const UserPanel = () => {
           <Nav.Item>
             <Nav.Link
               onClick={() => {
-                setSelectedTab(4);
+                setSelectedTab(3);
               }}
               eventKey="link-5"
               href=""
@@ -95,13 +78,42 @@ const UserPanel = () => {
               Receive Requests
             </Nav.Link>
           </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setSelectedTab(4);
+              }}
+              eventKey="link-6"
+              href=""
+              style={{
+                color: darkMode ? "var(--yellow)" : "var(--dark)",
+              }}
+            >
+              Purchaseable Lands
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setSelectedTab(5);
+              }}
+              eventKey="link-7"
+              href=""
+              style={{
+                color: darkMode ? "var(--yellow)" : "var(--dark)",
+              }}
+            >
+              Make it For Sale
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
 
         {selectedTab === 0 && <UWelcome />}
-        {selectedTab === 1 && <AddLand />}
-        {selectedTab === 2 && <MyLand />}
-        {selectedTab === 3 && <SendRequests />}
-        {selectedTab === 4 && <ReceiveRequests />}
+        {selectedTab === 1 && <MyLand />}
+        {selectedTab === 2 && <SendRequests />}
+        {selectedTab === 3 && <ReceiveRequests />}
+        {selectedTab === 4 && <PurchaseableLands />}
+        {selectedTab === 5 && <LandForSale />}
       </Container>
       {/* <Footer /> */}
     </div>
